@@ -18,12 +18,12 @@ export default function ThemeSwitcher() {
     }
 
     return (
-        <div className="flex items-center rounded-full border">
+        <div className="flex items-center rounded-md bg-secondary">
             <Button
                 variant={theme === "system" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setTheme("system")}
-                className="rounded-full h-6 w-8 p-0"
+                className="rounded-md h-6 w-8 p-0"
             >
                 <Monitor className="size-3" />
                 <span className="sr-only">System theme</span>
@@ -33,7 +33,7 @@ export default function ThemeSwitcher() {
                 variant={theme === "light" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setTheme("light")}
-                className="rounded-full h-6 w-8 p-0"
+                className="rounded-md h-6 w-8 p-0"
             >
                 <Sun className="size-3" />
                 <span className="sr-only">Light theme</span>
@@ -43,7 +43,7 @@ export default function ThemeSwitcher() {
                 variant={theme === "dark" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setTheme("dark")}
-                className="rounded-full h-6 w-8 p-0"
+                className="rounded-md h-6 w-8 p-0"
             >
                 <Moon className="size-3" />
                 <span className="sr-only">Dark theme</span>

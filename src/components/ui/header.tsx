@@ -38,30 +38,32 @@ export default function Header() {
 
             <header
                 className={clsx(
-                    "sticky top-0 z-50 h-24 bg-background flex items-center gap-12 px-4 md:px-12 transition-colors duration-200"
+                    "top-0 z-50 py-8 flex items-center gap-12 px-4 md:px-12 transition-colors duration-200"
                 )}
             >
-                <div className="flex-1 grid grid-cols-4 items-center tracking-tight text-sm">
+                <div className="flex-1 flex justify-between items-start tracking-tight">
                     <Link
                         href={"/"}
                         className="flex gap-1 items-center justify-self-start"
                     >
-                        <div className="size-5 rounded-full bg-blue-circle" />
-                        <span className="text-lg">jdn</span>
+                        <span className="text-2xl font-cursive tracking-tight">
+                            jdn
+                        </span>
                     </Link>
 
-                    <nav className="hidden lg:flex gap-12 items-center col-span-2 justify-self-center">
-                        {links.map((l, i) => (
-                            <Link className="group" href={l.href} key={i}>
-                                <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-150">
-                                    {l.name}
-                                </span>
-                            </Link>
-                        ))}
-                    </nav>
-
-                    <div className="hidden lg:block justify-self-end">
-                        <ThemeSwitcher />
+                    <div className="hidden lg:flex gap-8">
+                        <div>
+                            <ThemeSwitcher />
+                        </div>
+                        <nav className="flex flex-col text-right">
+                            {links.map((l, i) => (
+                                <Link className="group" href={l.href} key={i}>
+                                    <span className="text-muted-foreground font-semibold text-lg group-hover:text-foreground transition-colors duration-150">
+                                        {l.name}
+                                    </span>
+                                </Link>
+                            ))}
+                        </nav>
                     </div>
                 </div>
             </header>

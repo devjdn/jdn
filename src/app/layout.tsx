@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
+import { Geist_Mono, Inter, Borel } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/ui/header";
+import { FadeInSection } from "@/components/ui/fade-in-section";
+
+const borel = Borel({
+    variable: "--font-borel",
+    subsets: ["latin"],
+    weight: "400",
+});
 
 const interSans = Inter({
     variable: "--font-inter",
@@ -28,13 +35,13 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${interSans.variable} ${geistMono.variable} antialiased`}
+                className={`${interSans.variable} ${borel.variable} ${geistMono.variable} antialiased`}
             >
                 <ThemeProvider defaultTheme="system">
-                    <Header />
-                    <main className="px-4 md:px-12 py-8 md:py-16">
-                        {children}
-                    </main>
+                    <FadeInSection delay={0.1}>
+                        <Header />
+                    </FadeInSection>
+                    <main className="px-4 md:px-12 py-8">{children}</main>
                 </ThemeProvider>
             </body>
         </html>
