@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "jdn",
+    title: "jdn.sh",
     description:
         "This is my personal website. Here you'll be able to see highlights of my work, information about what I like to do besides writing code, and methods to get in contact with me. Enjoy!",
 };
@@ -35,7 +35,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${interSans.variable} ${borel.variable} ${geistMono.variable} antialiased`}
+                className={`${interSans.variable} ${borel.variable} ${geistMono.variable} antialiased selection:bg-primary selection:text-primary-foreground`}
             >
                 <ThemeProvider defaultTheme="system">
                     <FadeInSection delay={0.1}>

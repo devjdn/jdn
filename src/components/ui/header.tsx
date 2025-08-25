@@ -14,6 +14,7 @@ type LinkType = Array<{
 }>;
 
 const links: LinkType = [
+    { name: "Home", href: "/" },
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
@@ -42,23 +43,33 @@ export default function Header() {
                 )}
             >
                 <div className="flex-1 flex justify-between items-start tracking-tight">
-                    <Link
-                        href={"/"}
-                        className="flex gap-1 items-center justify-self-start"
-                    >
-                        <span className="text-2xl font-cursive tracking-tight">
-                            jdn
-                        </span>
-                    </Link>
+                    <div className="flex gap-2 items-center">
+                        {/* <div className="aspect-square bg-pink h-12 rounded-sm" /> */}
+                        <div className="flex flex-col justify-start items-start text-lg font-semibold tracking-tight leading-tight">
+                            <span>{"jdn.sh"}</span>
+                            <span className=" text-muted-foreground">
+                                {"Web Developer"}
+                            </span>
+                        </div>
+                    </div>
 
                     <div className="hidden lg:flex gap-8">
-                        <div>
-                            <ThemeSwitcher />
-                        </div>
-                        <nav className="flex flex-col text-right">
+                        <nav className="flex flex-row gap-8 text-right">
                             {links.map((l, i) => (
                                 <Link className="group" href={l.href} key={i}>
-                                    <span className="text-muted-foreground font-semibold text-lg group-hover:text-foreground transition-colors duration-150">
+                                    <span
+                                        className={clsx(
+                                            "font-semibold text-lg group-hover:text-foreground transition-colors duration-150 leading-tight",
+                                            {
+                                                "text-muted-foreground":
+                                                    pathname !== l.href,
+                                            },
+                                            {
+                                                "text-foreground":
+                                                    pathname === l.href,
+                                            }
+                                        )}
+                                    >
                                         {l.name}
                                     </span>
                                 </Link>
