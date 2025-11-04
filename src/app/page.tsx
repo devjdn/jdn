@@ -1,92 +1,51 @@
-import { FadeInSection } from "@/components/ui/fade-in-section";
-import { Briefcase, Code2, Globe, Palette, User } from "lucide-react";
-import {
-    SiNextdotjs,
-    SiReact,
-    SiTailwindcss,
-    SiTypescript,
-    SiPnpm,
-    SiVercel,
-} from "react-icons/si";
-import { IconType } from "react-icons";
-
-type TechTypeArray = Array<{ name: string; icon: IconType }>;
-
-const tech: TechTypeArray = [
-    { name: "Next.js", icon: SiNextdotjs },
-    { name: "React", icon: SiReact },
-    { name: "Tailwind CSS", icon: SiTailwindcss },
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "pnpm", icon: SiPnpm },
-    { name: "Vercel", icon: SiVercel },
-];
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
     return (
-        <div className="space-y-24">
-            <FadeInSection delay={0.3}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
-                    <FadeInSection
-                        delay={0.4}
-                        className="col-span-1 md:col-span-2 flex flex-col gap-2 justify-end rounded-3xl"
-                    >
-                        <h1 className="max-w-prose font-bold tracking-tighter text-4xl md:text-6xl">
-                            {"Hi, I'm Jayden!"}
-                        </h1>
-                    </FadeInSection>
-                    <FadeInSection
-                        delay={0.35}
-                        className="col-span-1 row-span-2 w-full flex flex-col justify-between rounded-3xl p-6 bg-secondary font-semibold tracking-tight"
-                    >
-                        <div className="flex items-center gap-2">
-                            <Code2 className="" />
-                            <p className="md:text-lg">Tools</p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4 flex-1">
-                            {tech.map((item) => (
-                                <div
-                                    key={item.name}
-                                    className="flex flex-col items-center justify-center gap-2 group"
-                                >
-                                    <item.icon className="size-12 text-foreground" />
-                                    <span className="text-xs text-center">
-                                        {item.name}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                    </FadeInSection>
-                    <FadeInSection
-                        delay={0.3}
-                        className="col-span-1 w-full flex flex-col justify-between rounded-3xl p-6 bg-pink text-white font-semibold tracking-tight"
-                    >
-                        <div className="flex items-center gap-2">
-                            <Briefcase className="stroke-primary-foreground" />
-                            <p className="md:text-lg text-primary-foreground">
-                                What I Do
-                            </p>
-                        </div>
-                        <h2 className="max-w-prose text-xl xl:text-2xl">
-                            I build modern web apps with the goal of helping
-                            push the web towards a faster, simpler future.
-                        </h2>
-                    </FadeInSection>
-                    <FadeInSection
-                        delay={0.4}
-                        className="col-span-1 w-full flex flex-col justify-between rounded-3xl p-6 bg-primary font-semibold tracking-tight"
-                    >
-                        <div className="flex items-center gap-2">
-                            <Globe className="stroke-primary-foreground" />
-                            <p className="md:text-lg text-primary-foreground">
-                                Location
-                            </p>
-                        </div>
-                        <h2 className="text-xl xl:text-2xl text-primary-foreground">
-                            North Yorkshire, United Kingdom
-                        </h2>
-                    </FadeInSection>
+        <div className="flex flex-col gap-10 md:gap-12 lg:grid lg:grid-cols-2 lg:gap-0 *:px-4 *:md:px-8">
+            <section className="space-y-10 md:space-y-14 lg:space-y-16">
+                <div className="space-y-6 md:space-y-8 lg:space-y-10">
+                    {/* <h2 className="font-mono uppercase text-muted-foreground text-sm md:text-base">
+                        A Quick Introduction
+                    </h2> */}
+
+                    <div className="space-y-6 md:space-y-8 lg:space-y-10 text-xl md:text-2xl lg:text-3xl supports-text-pretty:text-pretty max-w-4xl leading-normal md:leading-snug tracking-tighter text-muted-foreground">
+                        <p>
+                            Hi, I&apos;m{" "}
+                            <span className="text-foreground">Jayden</span>.
+                            I&apos;m a{" "}
+                            <span className="text-foreground">
+                                frontend web developer
+                            </span>{" "}
+                            from the <span className="text-foreground">UK</span>
+                            , who believes in making the web a simple, efficient
+                            experience for the user.
+                        </p>
+
+                        <p>
+                            I&apos;m currently in my{" "}
+                            <span className="text-foreground">
+                                second year of university
+                            </span>
+                            , I will achieve my{" "}
+                            <span className="text-foreground">
+                                BSc (Hons) Applied Computing
+                            </span>{" "}
+                            in the{" "}
+                            <span className="text-foreground">
+                                summer of 2027
+                            </span>
+                            .
+                        </p>
+
+                        <p>
+                            In my spare time, I love listening to music.
+                            It&apos;s my way to unwind and stay calm when life
+                            starts to get hectic.
+                        </p>
+                    </div>
                 </div>
-            </FadeInSection>
+            </section>
         </div>
     );
 }

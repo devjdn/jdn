@@ -1,53 +1,25 @@
 "use client";
 
+import * as React from "react";
+import { CircleIcon } from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
-import { Monitor, Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function ThemeSwitcher() {
-    const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
-        return null;
-    }
+    const { theme, resolvedTheme, setTheme } = useTheme();
+    const toggleTheme = () => {
+        const currentResolvedTheme = resolvedTheme || theme;
+        setTheme(currentResolvedTheme === "dark" ? "light" : "dark");
+    };
 
     return (
-        <div className="flex items-center rounded-md bg-secondary">
-            <Button
-                variant={theme === "system" ? "default" : "ghost"}
-                size="sm"
-                onClick={() => setTheme("system")}
-                className="rounded-md h-6 w-8 p-0"
-            >
-                <Monitor className="size-3" />
-                <span className="sr-only">System theme</span>
-            </Button>
-
-            <Button
-                variant={theme === "light" ? "default" : "ghost"}
-                size="sm"
-                onClick={() => setTheme("light")}
-                className="rounded-md h-6 w-8 p-0"
-            >
-                <Sun className="size-3" />
-                <span className="sr-only">Light theme</span>
-            </Button>
-
-            <Button
-                variant={theme === "dark" ? "default" : "ghost"}
-                size="sm"
-                onClick={() => setTheme("dark")}
-                className="rounded-md h-6 w-8 p-0"
-            >
-                <Moon className="size-3" />
-                <span className="sr-only">Dark theme</span>
-            </Button>
-        </div>
+        <button
+            className="grid grid-cols-[16px_40px] items-center justify-start gap-2 [&_svg]:size-4 text-sm font-mono uppercase justify-self-end"
+            onClick={toggleTheme}
+        >
+            <CircleIcon className="block dark:hidden" weight="fill" />
+            <CircleIcon className="hidden dark:block" weight="bold" />
+            <span className="block dark:hidden">Light</span>
+            <span className="hidden dark:block">Dark</span>
+        </button>
     );
 }

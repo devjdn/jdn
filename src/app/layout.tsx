@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter, Borel } from "next/font/google";
+import { Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/ui/header";
-import { FadeInSection } from "@/components/ui/fade-in-section";
-
-const borel = Borel({
-    variable: "--font-borel",
-    subsets: ["latin"],
-    weight: "400",
-});
+import BottomNav from "@/components/ui/bottom-nav";
 
 const interSans = Inter({
     variable: "--font-inter",
@@ -18,6 +12,11 @@ const interSans = Inter({
 
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
+    subsets: ["latin"],
+});
+
+const playfairDisplay = Playfair_Display({
+    variable: "--font-playfair-display",
     subsets: ["latin"],
 });
 
@@ -35,13 +34,11 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${interSans.variable} ${borel.variable} ${geistMono.variable} antialiased selection:bg-primary selection:text-primary-foreground`}
+                className={`${interSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased min-h-screen`}
             >
-                <ThemeProvider defaultTheme="system">
-                    <FadeInSection delay={0.1}>
-                        <Header />
-                    </FadeInSection>
-                    <main className="px-4 md:px-12 py-8">{children}</main>
+                <ThemeProvider defaultTheme="dark" attribute={"class"}>
+                    <Header />
+                    <main className="py-12 md:py-18 lg:py-24">{children}</main>
                 </ThemeProvider>
             </body>
         </html>
